@@ -15,6 +15,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
     { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
+    { id: "achievements", label: "Certifications" },
     { id: "contact", label: "Contact" },
   ]
 
@@ -48,11 +49,10 @@ export default function Navbar({ activeSection }: NavbarProps) {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                  activeSection === item.id
+                className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${activeSection === item.id
                     ? "text-primary"
                     : "text-muted-foreground hover:text-primary"
-                }`}
+                  }`}
               >
                 {item.label}
                 {activeSection === item.id && (
@@ -67,7 +67,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button 
+            <button
               className="text-foreground p-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
@@ -100,11 +100,10 @@ export default function Navbar({ activeSection }: NavbarProps) {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left px-3 py-3 text-base font-medium transition-colors duration-200 rounded-md ${
-                    activeSection === item.id
+                  className={`block w-full text-left px-3 py-3 text-base font-medium transition-colors duration-200 rounded-md ${activeSection === item.id
                       ? "bg-primary/10 text-primary"
                       : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </button>
