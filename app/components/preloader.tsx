@@ -10,8 +10,11 @@ interface PreloaderProps {
 export default function Preloader({ onComplete }: PreloaderProps) {
   const [isVisible, setIsVisible] = useState(true)
   const [animationPhase, setAnimationPhase] = useState(0)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+    
     // Phase 1: Initial load and name animation (1.5s)
     const phase1Timer = setTimeout(() => {
       setAnimationPhase(1)
@@ -52,7 +55,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       >
         {/* Animated background particles */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
+          {mounted && [...Array(20)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-blue-400/20 rounded-full"
