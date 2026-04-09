@@ -1,13 +1,30 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Github, Linkedin, Mail, Download } from "lucide-react"
 
+const phrases = [
+  "building Web Apps",
+  "solving DSA problems",
+  "giving contests",
+  "exploring new tech",
+]
+
 export default function Hero() {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % phrases.length)
+    }, 2800)
+    return () => clearInterval(interval)
+  }, [])
+
   const socialLinks = [
     { icon: Github, href: "https://github.com/theadarsh1m", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/adarshsachan01/", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:2k23.cs2312635@gmail.com", label: "Email" },
+    { icon: Mail, href: "https://mail.google.com/mail/?view=cm&fs=1&to=2k23.cs2312635%40gmail.com", label: "Email" },
   ]
 
   return (
@@ -29,10 +46,10 @@ export default function Hero() {
               duration: 1.4,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="flex-1 space-y-8"
+            className="flex-1 space-y-8 max-w-full z-10"
           >
             {/* Headline */}
-            <div className="relative overflow-hidden">
+            <div className="pt-2 pb-4">
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -41,10 +58,23 @@ export default function Hero() {
                   duration: 1,
                   ease: [0.25, 0.46, 0.45, 0.94],
                 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-4"
+                className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold leading-[1.15] text-foreground mb-4"
               >
-                I enjoy building{" "}
-                <span className="gradient-text">Web</span> Applications
+                <div className="mb-2">I enjoy</div>
+                <div className="relative h-[2.9em] sm:h-[2.7em] lg:h-[1.6em] overflow-hidden w-full">
+                  <AnimatePresence mode="popLayout">
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0, y: "100%" }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: "-100%" }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                      className="absolute left-0 w-full text-[1.1em] leading-[1.2] text-center lg:text-left gradient-text inline-block break-words"
+                    >
+                      {phrases[index]}
+                    </motion.span>
+                  </AnimatePresence>
+                </div>
               </motion.h1>
             </div>
 
@@ -60,7 +90,7 @@ export default function Hero() {
                 }}
                 className="text-xl md:text-2xl text-muted-foreground font-medium"
               >
-                3rd Year B.Tech CSE Student
+                B.Tech in Computer Science
               </motion.p>
 
               <motion.p
@@ -73,7 +103,7 @@ export default function Hero() {
                 }}
                 className="text-lg text-muted-foreground"
               >
-                PSIT Kanpur • Full-Stack Developer • MERN Stack Enthusiast
+                PSIT Kanpur • Full-Stack Developer • DSA Enthusiast
               </motion.p>
 
               <motion.p
@@ -86,7 +116,7 @@ export default function Hero() {
                 }}
                 className="text-base text-muted-foreground max-w-2xl mx-auto lg:mx-0"
               >
-                Passionate about building innovative web solutions and solving complex problems through code
+                Passionate about building innovative web solutions and giving regular contests to sharpen my problem solving skills
               </motion.p>
             </div>
 
@@ -111,7 +141,10 @@ export default function Hero() {
               </motion.a>
 
               <motion.a
-                href="#"
+                href="https://drive.google.com/uc?export=download&id=1bBv4948271T2v5vnH4znSA2NjoBBTbyE"
+                download="Adarsh_Sachan_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
                 className="px-8 py-3 bg-secondary text-secondary-foreground border border-border rounded-lg transition-all duration-300 flex items-center gap-2 hover:bg-muted"

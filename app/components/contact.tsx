@@ -71,7 +71,7 @@ export default function Contact() {
       icon: Mail,
       title: "Email",
       value: "2k23.cs2312635@gmail.com",
-      href: "mailto:2k23.cs2312635@gmail.com",
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=2k23.cs2312635%40gmail.com",
     },
     {
       icon: MapPin,
@@ -131,6 +131,8 @@ export default function Contact() {
                     <motion.a
                       key={info.title}
                       href={info.href}
+                      target={info.href.startsWith("http") ? "_blank" : undefined}
+                      rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
                       whileHover={{
                         x: 12,
                         scale: 1.02,

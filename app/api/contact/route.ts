@@ -4,6 +4,8 @@ import { checkRateLimit } from "@/lib/rate-limit";
 
 export async function POST(request: Request) {
   try {
+    const ownerEmail = "2k23.cs2312635@gmail.com";
+
     // 0. Rate Limiting
     const ip = request.headers.get("x-forwarded-for") || "anonymous";
     const rateLimit = await checkRateLimit(ip);
@@ -76,7 +78,7 @@ export async function POST(request: Request) {
     // Use 'replyTo' so when you click "reply", it sends to the user's email.
     const mailToOwner = {
       from: `"Portfolio Contact Form" <${emailUser}>`,
-      to: emailUser,
+      to: ownerEmail,
       replyTo: email,
       subject: `Portfolio Contact - ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
