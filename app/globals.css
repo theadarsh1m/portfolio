@@ -52,35 +52,21 @@
 
   body {
     @apply transition-colors duration-300 bg-background text-foreground;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
-
 }
 
 @layer utilities {
-  .scroll-smooth {
-    scroll-behavior: smooth;
-  }
-
-  .snap-y {
-    scroll-snap-type: y mandatory;
-  }
-
-  .snap-start {
-    scroll-snap-align: start;
-  }
-
-
-
   .gradient-text {
     background-color: #827fcf;
     background-image: linear-gradient(225deg, #827fcf 18%, #784BA0 24%, #353535 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 }
 
-/* Custom scrollbar with locomotive styling */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -98,59 +84,4 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-ring;
-}
-
-/* Smooth transitions for theme switching */
-* {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-
-
-.will-change-scroll {
-  will-change: scroll-position;
-}
-
-/* Enhanced mobile locomotive scrolling */
-@media (max-width: 768px) {
-  body {
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: none;
-  }
-
-  .locomotive-scroll {
-    transform: translate3d(0, 0, 0);
-  }
-
-  /* Reduce motion intensity on mobile for better performance */
-  .locomotive-element {
-    transform: translateZ(0);
-  }
-}
-
-/* Locomotive-style easing curves */
-.locomotive-ease {
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.locomotive-ease-out {
-  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.locomotive-ease-in-out {
-  transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-/* Preloader specific styles */
-.preloader-gradient {
-  background: linear-gradient(135deg, #1a1a1a 0%, #000000 50%, #1a1a1a 100%);
-}
-
-/* Text glow effects for preloader */
-.text-glow {
-  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-}
-
-.text-glow-strong {
-  text-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 40px rgba(59, 130, 246, 0.4);
 }

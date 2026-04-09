@@ -13,6 +13,7 @@ import Chatbot from "./components/chatbot"
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home")
+  const [mounted, setMounted] = useState(false)
 
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
@@ -22,6 +23,8 @@ export default function Portfolio() {
   })
 
   useEffect(() => {
+    setMounted(true)
+
     const handleScroll = () => {
       const sections = ["home", "about", "skills", "projects", "contact"]
       const scrollPosition = window.scrollY + 100
@@ -43,12 +46,14 @@ export default function Portfolio() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      {/* Enhanced progress bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary transform-origin-0 z-50"
-        style={{ scaleX }}
-      />
+    <div className="relative min-h-screen bg-background text-foreground transition-colors duration-300">
+      {/* Progress bar - only rendered after mount to avoid hydration mismatch */}
+      {mounted && (
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary transform-origin-0 z-50"
+          style={{ scaleX }}
+        />
+      )}
 
       <Navbar activeSection={activeSection} />
       <ThemeToggle />

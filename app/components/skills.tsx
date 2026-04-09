@@ -115,30 +115,7 @@ export default function Skills() {
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               className="bg-gradient-to-r from-primary to-accent rounded-xl p-8 text-center text-white relative overflow-hidden"
             >
-              {/* Animated background pattern */}
-              <div className="absolute inset-0 overflow-hidden">
-                {[...Array(10)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-20 h-20 bg-white/10 rounded-full"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      scale: [1, 1.5, 1],
-                      opacity: [0.1, 0.3, 0.1],
-                      rotate: [0, 360],
-                    }}
-                    transition={{
-                      duration: 6 + Math.random() * 4,
-                      repeat: Number.POSITIVE_INFINITY,
-                      delay: Math.random() * 2,
-                      ease: [0.25, 0.46, 0.45, 0.94],
-                    }}
-                  />
-                ))}
-              </div>
+
 
               <h3 className="text-2xl font-semibold mb-4 relative z-10">Certifications</h3>
               <div className="grid md:grid-cols-3 gap-4 text-sm relative z-10">
