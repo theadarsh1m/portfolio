@@ -113,7 +113,7 @@ export default function Chatbot() {
         onClick={() => setIsOpen(true)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
+        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-accent text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2 }}
@@ -123,10 +123,10 @@ export default function Chatbot() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 3 }}
-          className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap"
+          className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-secondary text-secondary-foreground px-3 py-1 rounded-lg text-sm whitespace-nowrap"
         >
           Ask about Adarsh
-          <div className="absolute left-full top-1/2 -translate-y-1/2 border-4 border-transparent border-l-gray-900" />
+          <div className="absolute left-full top-1/2 -translate-y-1/2 border-4 border-transparent border-l-secondary" />
         </motion.div>
       </motion.button>
 
@@ -145,10 +145,10 @@ export default function Chatbot() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-md h-[600px] flex flex-col overflow-hidden"
+              className="bg-background rounded-2xl shadow-2xl w-full max-w-md h-[600px] flex flex-col overflow-hidden"
             >
               {/* Header */}
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 flex items-center justify-between">
+              <div className="bg-gradient-to-r from-primary to-accent text-white p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                     <Bot size={20} />
@@ -178,15 +178,15 @@ export default function Chatbot() {
                     className={`flex gap-3 ${message.sender === "user" ? "justify-end" : "justify-start"}`}
                   >
                     {message.sender === "bot" && (
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center flex-shrink-0">
                         <Bot size={16} className="text-white" />
                       </div>
                     )}
                     <div
                       className={`max-w-[80%] p-3 rounded-2xl ${
                         message.sender === "user"
-                          ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white"
-                          : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white"
+                          ? "bg-gradient-to-r from-primary to-accent text-white"
+                          : "bg-card text-foreground"
                       }`}
                     >
                       <p className="text-sm">{message.content}</p>
@@ -211,10 +211,10 @@ export default function Chatbot() {
                     animate={{ opacity: 1, y: 0 }}
                     className="flex gap-3 justify-start"
                   >
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center">
                       <Bot size={16} className="text-white" />
                     </div>
-                    <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-2xl">
+                    <div className="bg-card p-3 rounded-2xl">
                       <div className="flex gap-1">
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
                         <div
@@ -235,14 +235,14 @@ export default function Chatbot() {
 
               {/* Suggested Questions */}
               {messages.length === 1 && (
-                <div className="p-4 border-t dark:border-gray-700">
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Try asking:</p>
+                <div className="p-4 border-t dark:border-border">
+                  <p className="text-sm text-muted-foreground mb-2">Try asking:</p>
                   <div className="flex flex-wrap gap-2">
                     {suggestedQuestions.slice(0, 3).map((question, index) => (
                       <button
                         key={index}
                         onClick={() => handleSuggestedQuestion(question)}
-                        className="text-xs bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-2 py-1 rounded-full transition-colors"
+                        className="text-xs bg-card hover:bg-muted px-2 py-1 rounded-full transition-colors"
                       >
                         {question}
                       </button>
@@ -252,7 +252,7 @@ export default function Chatbot() {
               )}
 
               {/* Input */}
-              <form onSubmit={handleSubmit} className="p-4 border-t dark:border-gray-700">
+              <form onSubmit={handleSubmit} className="p-4 border-t dark:border-border">
                 <div className="flex gap-2">
                   <Input
                     value={inputValue}
@@ -264,7 +264,7 @@ export default function Chatbot() {
                   <Button
                     type="submit"
                     disabled={!inputValue.trim() || isLoading}
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                    className="bg-gradient-to-r from-primary to-accent hover:from-blue-700 hover:to-purple-700"
                   >
                     <Send size={16} />
                   </Button>

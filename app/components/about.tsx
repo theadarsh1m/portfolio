@@ -2,12 +2,10 @@
 
 import { Code, Target, Users, Award } from "lucide-react"
 import ScrollReveal from "./scroll-reveal"
-import { useLocomotiveScroll } from "../../hooks/use-locomotive-scroll"
 import { motion } from "framer-motion"
 import Image from "next/image"
 
 export default function About() {
-  const { slowParallax } = useLocomotiveScroll()
 
   const highlights = [
     {
@@ -33,39 +31,16 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
-      {/* Parallax background elements */}
-      <motion.div style={{ y: slowParallax }} className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-32 h-32 bg-blue-500/5 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.1, 0.3, 0.1],
-              rotate: [0, 180, 360],
-            }}
-            transition={{
-              duration: 8 + Math.random() * 4,
-              repeat: Number.POSITIVE_INFINITY,
-              delay: Math.random() * 2,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }}
-          />
-        ))}
-      </motion.div>
+    <section id="about" className="py-20 bg-background relative overflow-hidden">
+      {/* Decorative background elements */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="space-y-16">
           {/* Section header with left reveal */}
           <ScrollReveal direction="left" delay={0.2}>
             <div className="text-center">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">About Me</h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto" />
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">About Me</h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto" />
             </div>
           </ScrollReveal>
 
@@ -94,7 +69,7 @@ export default function About() {
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                  className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg"
+                  className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center shadow-lg"
                 >
                   <Code className="w-8 h-8 text-white" />
                 </motion.div>
@@ -112,11 +87,11 @@ export default function About() {
             {/* Text content with right reveal */}
             <ScrollReveal direction="right" delay={0.4}>
               <div className="space-y-6">
-                <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="text-2xl md:text-3xl font-semibold text-foreground">
                   Passionate Developer & Problem Solver
                 </h3>
 
-                <div className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
                     I'm a dedicated 3rd-year Computer Science Engineering student at PSIT Kanpur, with a deep passion
                     for full-stack web development. My journey in tech is driven by curiosity and the desire to create
@@ -143,7 +118,7 @@ export default function About() {
                   }}
                   className="inline-block"
                 >
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium">
+                  <div className="bg-gradient-to-r from-primary to-accent text-white px-6 py-3 rounded-lg font-medium">
                     📍 Kanpur, Uttar Pradesh, India
                   </div>
                 </motion.div>
@@ -162,19 +137,19 @@ export default function About() {
                     boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className="bg-card border border-border p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="flex items-center mb-4">
                     <motion.div
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
-                      className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg"
+                      className="p-2 bg-gradient-to-r from-primary to-accent rounded-lg"
                     >
                       <highlight.icon className="w-6 h-6 text-white" />
                     </motion.div>
                   </div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{highlight.title}</h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">{highlight.description}</p>
+                  <h4 className="text-lg font-semibold text-foreground mb-2">{highlight.title}</h4>
+                  <p className="text-muted-foreground text-sm">{highlight.description}</p>
                 </motion.div>
               </ScrollReveal>
             ))}

@@ -4,10 +4,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ExternalLink, Github, Cloud, Shield, Heart, Link } from "lucide-react"
 import { useState } from "react"
 import ScrollReveal from "./scroll-reveal"
-import { useLocomotiveScroll } from "../../hooks/use-locomotive-scroll"
 
 export default function Projects() {
-  const { fastParallax } = useLocomotiveScroll()
   const [hoveredProject, setHoveredProject] = useState<string | null>(null)
 
   const projects = [
@@ -62,40 +60,17 @@ export default function Projects() {
   ]
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
-      {/* Dynamic parallax background */}
-      <motion.div style={{ y: fastParallax }} className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-24 h-24 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              scale: [1, 1.4, 1],
-              rotate: [0, 180, 360],
-              opacity: [0.1, 0.4, 0.1],
-            }}
-            transition={{
-              duration: 8 + Math.random() * 4,
-              repeat: Number.POSITIVE_INFINITY,
-              delay: Math.random() * 3,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }}
-          />
-        ))}
-      </motion.div>
+    <section id="projects" className="py-20 bg-background relative overflow-hidden">
+      {/* Decorative background */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="space-y-16">
           {/* Section header with right reveal */}
           <ScrollReveal direction="right" delay={0.2}>
             <div className="text-center">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Featured Projects</h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8" />
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Featured Projects</h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8" />
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 Here are some of my recent projects that showcase my skills and passion for development
               </p>
             </div>
@@ -116,7 +91,7 @@ export default function Projects() {
                     boxShadow: "0 40px 80px rgba(0,0,0,0.2)",
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group relative"
+                  className="bg-card border border-border rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group relative"
                 >
                   <motion.div
                     className={`h-2 bg-gradient-to-r ${project.gradient}`}
@@ -133,18 +108,18 @@ export default function Projects() {
                       >
                         <project.icon className="w-6 h-6 text-white" />
                       </motion.div>
-                      <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">{project.title}</h3>
+                      <h3 className="text-2xl font-semibold text-foreground">{project.title}</h3>
                     </div>
 
-                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{project.description}</p>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">{project.description}</p>
 
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Key Features:</h4>
+                      <h4 className="text-sm font-semibold text-foreground mb-3">Key Features:</h4>
                       <div className="grid grid-cols-2 gap-2">
                         {project.features.map((feature, featureIndex) => (
                           <motion.div
                             key={featureIndex}
-                            className="flex items-center text-sm text-gray-600 dark:text-gray-300"
+                            className="flex items-center text-sm text-muted-foreground"
                             initial={{ opacity: 0, x: -10 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
@@ -165,7 +140,7 @@ export default function Projects() {
                         {project.tech.map((tech, techIndex) => (
                           <motion.span
                             key={techIndex}
-                            className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium"
+                            className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm font-medium"
                             whileHover={{
                               scale: 1.1,
                               backgroundColor: "rgb(59, 130, 246)",
@@ -190,7 +165,7 @@ export default function Projects() {
                         }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                        className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                        className="flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-muted transition-colors duration-200"
                       >
                         <Github size={18} />
                         Code
@@ -232,7 +207,7 @@ export default function Projects() {
                           animate={{ opacity: 1, scale: 1 }}
                           exit={{ opacity: 0, scale: 0.8 }}
                           transition={{ duration: 0.3, ease: "easeOut" }}
-                          className="absolute inset-0 bg-white dark:bg-gray-900 rounded-xl shadow-2xl z-10 overflow-hidden"
+                          className="absolute inset-0 bg-card border border-border rounded-xl shadow-2xl z-10 overflow-hidden"
                           onMouseEnter={() => setHoveredProject(project.title)}
                           onMouseLeave={() => setHoveredProject(null)}
                         >

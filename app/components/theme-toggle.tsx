@@ -35,11 +35,11 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="fixed top-20 right-4 z-50 p-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700"
+      className="fixed top-20 right-4 z-50 p-3 bg-card rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 border border-border"
       aria-label="Toggle theme"
     >
       <motion.div initial={false} animate={{ rotate: isDark ? 180 : 0 }} transition={{ duration: 0.3 }}>
-        {isDark ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-700" />}
+        {isDark ? <Sun className="w-5 h-5 text-primary" /> : <Moon className="w-5 h-5 text-foreground" />}
       </motion.div>
     </motion.button>
   )

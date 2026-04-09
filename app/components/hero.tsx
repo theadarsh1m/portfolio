@@ -3,7 +3,6 @@
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import { Github, Linkedin, Mail, Download } from "lucide-react"
-import { useLocomotiveScroll } from "../../hooks/use-locomotive-scroll"
 
 export default function Hero() {
   const ref = useRef(null)
@@ -14,8 +13,6 @@ export default function Hero() {
     target: ref,
     offset: ["start start", "end start"],
   })
-
-  const { slowParallax, mediumParallax } = useLocomotiveScroll()
 
   // Enhanced locomotive-style zoom with smoother curves
   const nameScale = useTransform(scrollYProgress, [0, 0.15, 0.3, 0.5], [1, 1.1, 1.4, 2.2])
