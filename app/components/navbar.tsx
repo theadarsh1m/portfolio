@@ -1,12 +1,15 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 interface NavbarProps {
   activeSection: string
 }
 
 export default function Navbar({ activeSection }: NavbarProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const navItems = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
@@ -18,7 +21,12 @@ export default function Navbar({ activeSection }: NavbarProps) {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      // Close menu first if it's open on mobile
+      setIsMenuOpen(false)
+      // Small delay to allow menu closing animation to start before scrolling
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: "smooth" })
+      }, 100)
     }
   }
 
@@ -34,6 +42,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
             Adarsh Sachan
           </motion.div>
 
+          {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <button
@@ -58,14 +67,52 @@ export default function Navbar({ activeSection }: NavbarProps) {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button className="text-foreground">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+            <button 
+              className="text-foreground p-2"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-background border-b border-border overflow-hidden"
+          >
+            <div className="px-4 py-2 space-y-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`block w-full text-left px-3 py-3 text-base font-medium transition-colors duration-200 rounded-md ${
+                    activeSection === item.id
+                      ? "bg-primary/10 text-primary"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   )
 }
