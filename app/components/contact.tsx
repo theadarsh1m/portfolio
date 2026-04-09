@@ -3,7 +3,7 @@
 import type React from "react"
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { Mail, MapPin, Send, Github, Linkedin } from "lucide-react"
+import { Mail, MapPin, Send, Github, Linkedin, FileText, CheckCircle, AlertCircle } from "lucide-react"
 import ScrollReveal from "./scroll-reveal"
 
 export default function Contact() {
@@ -11,22 +11,52 @@ export default function Contact() {
     name: "",
     email: "",
     message: "",
+    honeypot: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Basic email regex validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      setStatus("error")
+      setErrorMessage("Please enter a valid email address.")
+      return
+    }
+
     setIsSubmitting(true)
+    setStatus("idle")
+    setErrorMessage("")
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
 
-    // Reset form
-    setFormData({ name: "", email: "", message: "" })
-    setIsSubmitting(false)
+      const data = await response.json()
 
-    // Show success message
-    alert("Message sent successfully!")
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message")
+      }
+
+      // Reset form on success
+      setFormData({ name: "", email: "", message: "", honeypot: "" })
+      setStatus("success")
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => setStatus("idle"), 5000)
+    } catch (error: any) {
+      setStatus("error")
+      setErrorMessage(error.message || "An unexpected error occurred.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -152,6 +182,24 @@ export default function Contact() {
                       </motion.a>
                     ))}
                   </div>
+
+                  <div className="pt-6 mt-4 border-t border-border/50">
+                    <motion.a
+                      href="https://drive.google.com/file/d/1bBv4948271T2v5vnH4znSA2NjoBBTbyE/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{
+                        scale: 1.02,
+                        boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-background border border-primary text-primary rounded-lg font-medium hover:bg-primary/10 transition-colors duration-300 shadow-sm"
+                    >
+                      <FileText size={18} />
+                      View Resume
+                    </motion.a>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
@@ -168,6 +216,39 @@ export default function Contact() {
                 <h3 className="text-2xl font-semibold text-foreground mb-6">Send a Message</h3>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Honeypot field (hidden from users, visible to bots) */}
+                  <input
+                    type="text"
+                    name="honeypot"
+                    style={{ display: "none" }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.honeypot}
+                    onChange={handleChange}
+                  />
+
+                  {status === "success" && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-center gap-3 p-4 bg-green-500/10 text-green-500 border border-green-500/20 rounded-lg"
+                    >
+                      <CheckCircle size={20} className="shrink-0" />
+                      <p className="text-sm font-medium">Message sent successfully! I'll get back to you soon.</p>
+                    </motion.div>
+                  )}
+
+                  {status === "error" && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-center gap-3 p-4 bg-destructive/10 text-destructive border border-destructive/20 rounded-lg"
+                    >
+                      <AlertCircle size={20} className="shrink-0" />
+                      <p className="text-sm font-medium">{errorMessage}</p>
+                    </motion.div>
+                  )}
+
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-2">
                       Name
@@ -208,6 +289,9 @@ export default function Contact() {
                       className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors duration-200 text-foreground"
                       placeholder="your.email@example.com"
                     />
+                    <p className="mt-1.5 text-xs text-muted-foreground/80">
+                      * Please use your real email so I can reply to you.
+                    </p>
                   </div>
 
                   <div>
