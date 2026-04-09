@@ -1,49 +1,73 @@
-# Adarsh Sachan - Portfolio Website
+# Adarsh Sachan - Advanced Portfolio Website
 
-A modern, responsive portfolio website built with Next.js, React, Tailwind CSS, and Framer Motion, featuring an AI-powered chatbot.
+A modern, high-performance, and secure portfolio website built with the latest Next.js features, featuring interactive components, AI integration, and production-grade security.
 
-## Features
+## 🌟 Key Features
 
-- 🎨 Modern, responsive design with dark mode support
-- 🚀 Smooth animations with Framer Motion
-- 🤖 AI-powered chatbot using Google Gemini
-- 📱 Mobile-first responsive design
-- ⚡ Fast loading with Next.js optimization
-- 🎯 SEO optimized
+- **🎨 Advanced UI/UX:**
+  - **Floating Skills Showcase:** An interactive, responsive "orbit" layout featuring 20+ technologies with animated icons and central ring design.
+  - **Live Link Previews:** Hovering over any skill card shows a live snapshot of the technology's website using Radix UI and Microlink.
+  - **Fluid Animations:** Smooth entrance and hover effects powered by Framer Motion.
+  - **Modern Theming:** Dark mode support with OKLCH-based theme tokens and dynamic icon inversion.
 
-## Tech Stack
+- **🛡️ Production-Grade Security:**
+  - **Secure Contact Form:** Integrated with `Nodemailer` for reliable email delivery.
+  - **Anti-Spoofing:** Backend-controlled identity verification; emails are sent from a secure system address with `Reply-To` mapped to the user.
+  - **Bot Protection:** Hidden "Honeypot" fields to silently trap and reject spam bots.
+  - **Persistent Rate Limiting:** Advanced IP-based blocking (3 requests per 24 hours) using **Upstash Redis**.
+  - **Sliding Window Algorithm:** Prevents "window-jumping" spam attacks across rolling 24-hour periods.
 
-- **Framework:** Next.js 15
-- **Styling:** Tailwind CSS
+- **🤖 AI Integration:**
+  - **Gemini-Powered Chatbot:** Context-aware AI assistant to help visitors learn more about my projects and skills through natural conversation.
+
+- **📱 Fully Responsive:** Optimized for everything from mobile phones up to Ultra-Wide desktop monitors.
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 15 (App Router / Turbopack)
+- **Styling:** Tailwind CSS / Vanilla CSS
 - **Animations:** Framer Motion
+- **Database (Security):** Upstash Redis
+- **Email:** Nodemailer (Gmail App Passwords)
 - **AI:** Google Gemini API
-- **Icons:** Lucide React
-- **Deployment:** Vercel
+- **UI Components:** Radix UI (Hover Card), Lucide React (Icons)
+- **Deployment:** Vercel / Netlify
 
-## Getting Started
+## 🚀 Getting Started
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Create `.env.local` and add your Gemini API key:
-   \`\`\`
-   GEMINI_API_KEY=your_api_key_here
-   \`\`\`
-4. Run development server: `npm run dev`
-5. Open [http://localhost:3000](http://localhost:3000)
+1. **Clone the repository**
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Configure Environment Variables:**
+   Create a `.env` file in the root directory and add the following:
+   ```env
+   # AI Chatbot
+   GEMINI_API_KEY=your_gemini_key
 
-## Deployment on Vercel
+   # Email Configuration
+   EMAIL_USER=your_gmail_address
+   EMAIL_PASS=your_16_digit_app_password
 
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Add environment variable `GEMINI_API_KEY` in Vercel dashboard
-4. Deploy!
+   # Redis Rate Limiting (Upstash)
+   UPSTASH_REDIS_REST_URL=your_upstash_url
+   UPSTASH_REDIS_REST_TOKEN=your_upstash_token
+   ```
+4. **Run the development server:** `npm run dev`
+5. **Open [http://localhost:3000](http://localhost:3000)**
 
-## Environment Variables
+## 📋 Security Details
 
-- `GEMINI_API_KEY` - Your Google Gemini API key for the chatbot
+The contact form is protected by a multi-layer security system:
+1. **Frontend Validation:** Regex email checking before submission.
+2. **Honeypot:** Transparent-to-humans field that kills the request if filled by a bot.
+3. **IP Rate Limit:** Any IP exceeding 3 submissions is blocked for **24 hours**. This block is persistent across Vercel serverless instances thanks to Redis.
+4. **Generic Feedback:** Security messages are kept generic ("Too many requests") to avoid leaking internal logic to potential attackers.
 
-## Contact
+## 📄 Contact & Links
 
-- Email: 2k23.cs2312635@gmail.com
-- LinkedIn: [adarshsachan01](https://www.linkedin.com/in/adarshsachan01/)
-- GitHub: [theadarsh1m](https://github.com/theadarsh1m)
+- **LinkedIn:** [adarshsachan01](https://www.linkedin.com/in/adarshsachan01/)
+- **GitHub:** [theadarsh1m](https://github.com/theadarsh1m)
+- **Portfolio:** [theadarsh.vercel.app](https://theadarsh.vercel.app/)
+- **Email:** 2k23.cs2312635@gmail.com
