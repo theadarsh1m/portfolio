@@ -180,7 +180,7 @@ export default function Achievements() {
                     onClick={prev}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-black/70 text-black dark:text-white border border-border rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-black transition-colors shadow-lg z-10"
+                    className="cursor-target absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-black/70 text-black dark:text-white border border-border rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-black transition-colors shadow-lg z-10"
                     aria-label="Previous certificate"
                   >
                     <ChevronLeft size={20} />
@@ -189,7 +189,7 @@ export default function Achievements() {
                     onClick={next}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-black/70 text-black dark:text-white border border-border rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-black transition-colors shadow-lg z-10"
+                    className="cursor-target absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-black/70 text-black dark:text-white border border-border rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-black transition-colors shadow-lg z-10"
                     aria-label="Next certificate"
                   >
                     <ChevronRight size={20} />
@@ -203,7 +203,7 @@ export default function Achievements() {
                       key={i}
                       onClick={() => goTo(i)}
                       aria-label={`Go to certificate ${i + 1}`}
-                      className={`rounded-full transition-all duration-300 ${i === current
+                      className={`cursor-target rounded-full transition-all duration-300 ${i === current
                         ? "w-8 h-2.5 bg-primary"
                         : "w-2.5 h-2.5 bg-muted-foreground/30 hover:bg-muted-foreground/50"
                         }`}
@@ -247,7 +247,7 @@ export default function Achievements() {
                       href={cert.driveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-card border border-border flex items-center justify-center w-48 rounded-2xl h-14 relative text-foreground font-semibold group shadow-sm hover:shadow-md transition-shadow"
+                      className="cursor-target bg-card border border-border flex items-center justify-center w-48 rounded-2xl h-14 relative text-foreground font-semibold group shadow-sm hover:shadow-md transition-shadow"
                     >
                       <div className={`bg-gradient-to-r ${cert.gradient} rounded-xl h-12 w-12 flex items-center justify-center absolute right-1 top-[3px] group-hover:w-[184px] z-10 duration-500`}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="25px" width="25px" className="rotate-180">
@@ -277,7 +277,7 @@ export default function Achievements() {
                   onClick={() => goTo(i)}
                   whileHover={{ scale: 1.08, y: -4 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${i === current
+                  className={`cursor-target relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${i === current
                     ? "border-primary shadow-lg shadow-primary/20"
                     : "border-border opacity-50 hover:opacity-90"
                     }`}

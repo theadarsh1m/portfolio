@@ -135,7 +135,7 @@ export default function Hero() {
                 href="#contact"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-                className="px-8 py-3 bg-primary text-primary-foreground rounded-lg transition-all duration-300"
+                className="cursor-target px-8 py-3 bg-primary text-primary-foreground rounded-lg transition-all duration-300"
               >
                 Get In Touch
               </motion.a>
@@ -147,7 +147,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-                className="px-8 py-3 bg-secondary text-secondary-foreground border border-border rounded-lg transition-all duration-300 flex items-center gap-2 hover:bg-muted"
+                className="cursor-target px-8 py-3 bg-secondary text-secondary-foreground border border-border rounded-lg transition-all duration-300 flex items-center gap-2 hover:bg-muted"
               >
                 <Download size={18} />
                 Resume
@@ -168,7 +168,7 @@ export default function Hero() {
                     rotate: [0, -5, 5, 0],
                   }}
                   whileTap={{ scale: 0.9 }}
-                  className="p-3 bg-card text-card-foreground border border-border rounded-full hover:bg-muted transition-all duration-300"
+                  className="cursor-target p-3 bg-card text-card-foreground border border-border rounded-full hover:bg-muted transition-all duration-300"
                   initial={{ opacity: 0, y: 20, scale: 0.8 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{

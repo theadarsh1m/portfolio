@@ -139,7 +139,7 @@ export default function Contact() {
                         boxShadow: "0 15px 35px rgba(0,0,0,0.15)",
                       }}
                       transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                      className="flex items-center gap-4 p-4 bg-card rounded-lg hover:bg-muted transition-colors duration-200"
+                      className="cursor-target flex items-center gap-4 p-4 bg-card rounded-lg hover:bg-muted transition-colors duration-200"
                     >
                       <motion.div
                         className="p-3 bg-gradient-to-r from-primary to-accent rounded-lg"
@@ -178,7 +178,7 @@ export default function Contact() {
                           damping: 25,
                           rotate: { duration: 0.6 },
                         }}
-                        className={`p-3 bg-secondary rounded-lg text-muted-foreground ${social.color} transition-colors duration-200`}
+                        className={`cursor-target p-3 bg-secondary rounded-lg text-muted-foreground ${social.color} transition-colors duration-200`}
                       >
                         <social.icon size={24} />
                       </motion.a>
@@ -196,7 +196,7 @@ export default function Contact() {
                       }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-background border border-primary text-primary rounded-lg font-medium hover:bg-primary/10 transition-colors duration-300 shadow-sm"
+                      className="cursor-target inline-flex items-center gap-2 px-6 py-3 bg-background border border-primary text-primary rounded-lg font-medium hover:bg-primary/10 transition-colors duration-300 shadow-sm"
                     >
                       <FileText size={18} />
                       View Resume
@@ -267,7 +267,7 @@ export default function Contact() {
                         boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1)",
                       }}
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors duration-200 text-foreground"
+                      className="cursor-target w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors duration-200 text-foreground"
                       placeholder="Your Name"
                     />
                   </div>
@@ -288,7 +288,7 @@ export default function Contact() {
                         boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1)",
                       }}
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors duration-200 text-foreground"
+                      className="cursor-target w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors duration-200 text-foreground"
                       placeholder="your.email@example.com"
                     />
                     <p className="mt-1.5 text-xs text-muted-foreground/80">
@@ -315,7 +315,7 @@ export default function Contact() {
                         boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1)",
                       }}
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors duration-200 text-foreground resize-none"
+                      className="cursor-target w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors duration-200 text-foreground resize-none"
                       placeholder="Your message..."
                     />
                   </div>
@@ -329,7 +329,7 @@ export default function Contact() {
                     }}
                     whileTap={{ scale: 0.98 }}
                     transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg font-medium hover:shadow-lg transition-shadow duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="cursor-target w-full px-6 py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg font-medium hover:shadow-lg transition-shadow duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <motion.div

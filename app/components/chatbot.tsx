@@ -113,7 +113,7 @@ export default function Chatbot() {
         onClick={() => setIsOpen(true)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-accent text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
+        className="cursor-target fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-accent text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2 }}
@@ -162,7 +162,7 @@ export default function Chatbot() {
                   variant="ghost"
                   size="sm"
                   onClick={() => setIsOpen(false)}
-                  className="text-white hover:bg-white/20"
+                  className="cursor-target text-white hover:bg-white/20"
                 >
                   <X size={20} />
                 </Button>
@@ -242,7 +242,7 @@ export default function Chatbot() {
                       <button
                         key={index}
                         onClick={() => handleSuggestedQuestion(question)}
-                        className="text-xs bg-card hover:bg-muted px-2 py-1 rounded-full transition-colors"
+                        className="cursor-target text-xs bg-card hover:bg-muted px-2 py-1 rounded-full transition-colors"
                       >
                         {question}
                       </button>
@@ -258,13 +258,13 @@ export default function Chatbot() {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder="Ask me anything about Adarsh..."
-                    className="flex-1"
+                    className="cursor-target flex-1"
                     disabled={isLoading}
                   />
                   <Button
                     type="submit"
                     disabled={!inputValue.trim() || isLoading}
-                    className="bg-gradient-to-r from-primary to-accent hover:from-blue-700 hover:to-purple-700"
+                    className="cursor-target bg-gradient-to-r from-primary to-accent hover:from-blue-700 hover:to-purple-700"
                   >
                     <Send size={16} />
                   </Button>

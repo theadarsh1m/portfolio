@@ -92,7 +92,7 @@ function FeaturedProject({ project, index }: { project: typeof projects[0]; inde
             href={project.demo || project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="block relative rounded-xl overflow-hidden aspect-video shadow-xl"
+            className="cursor-target block relative rounded-xl overflow-hidden aspect-video shadow-xl"
           >
             <Image
               src={project.image}
@@ -131,7 +131,7 @@ function FeaturedProject({ project, index }: { project: typeof projects[0]; inde
             {project.description.length > 120 && (
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="text-xs text-primary mt-2 font-medium hover:underline text-left"
+                className="cursor-target text-xs text-primary mt-2 font-medium hover:underline text-left"
               >
                 {isExpanded ? "Show less" : "Show more"}
               </button>
@@ -157,7 +157,7 @@ function FeaturedProject({ project, index }: { project: typeof projects[0]; inde
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ y: -3 }}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="cursor-target text-muted-foreground hover:text-foreground transition-colors duration-200"
               aria-label="GitHub"
             >
               <Github size={22} />
@@ -168,7 +168,7 @@ function FeaturedProject({ project, index }: { project: typeof projects[0]; inde
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="cursor-target text-muted-foreground hover:text-foreground transition-colors duration-200"
                 aria-label="Live Demo"
               >
                 <ExternalLink size={22} />
@@ -200,7 +200,7 @@ function CompactProject({ project, index }: { project: typeof projects[0]; index
           href={project.demo || project.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="block relative w-full aspect-[16/10] shrink-0 overflow-hidden cursor-pointer"
+          className="cursor-target block relative w-full aspect-[16/10] shrink-0 overflow-hidden cursor-pointer"
         >
           <Image
             src={project.image}
@@ -248,7 +248,7 @@ function CompactProject({ project, index }: { project: typeof projects[0]; index
                   e.preventDefault();
                   setIsExpanded(!isExpanded);
                 }}
-                className="text-xs text-primary mt-1 font-medium hover:underline text-left focus:outline-none"
+                className="cursor-target text-xs text-primary mt-1 font-medium hover:underline text-left focus:outline-none"
               >
                 {isExpanded ? "Show less" : "Show more"}
               </button>
@@ -279,7 +279,7 @@ function CompactProject({ project, index }: { project: typeof projects[0]; index
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ y: -2, scale: 1.1 }}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="cursor-target text-muted-foreground hover:text-foreground transition-colors duration-200"
               aria-label="GitHub"
             >
               <Github size={18} />
@@ -290,7 +290,7 @@ function CompactProject({ project, index }: { project: typeof projects[0]; index
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -2, scale: 1.1 }}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="cursor-target text-muted-foreground hover:text-foreground transition-colors duration-200"
                 aria-label="Live Demo"
               >
                 <ExternalLink size={18} />

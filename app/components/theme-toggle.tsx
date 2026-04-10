@@ -35,7 +35,7 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="fixed top-20 right-4 z-50 p-3 bg-card rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 border border-border"
+      className="cursor-target fixed top-20 right-4 z-50 p-3 bg-card rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 border border-border"
       aria-label="Toggle theme"
     >
       <motion.div initial={false} animate={{ rotate: isDark ? 180 : 0 }} transition={{ duration: 0.3 }}>

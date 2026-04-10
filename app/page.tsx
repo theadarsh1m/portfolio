@@ -11,6 +11,7 @@ import Achievements from "./components/achievements"
 import Contact from "./components/contact"
 import ThemeToggle from "./components/theme-toggle"
 import Chatbot from "./components/chatbot"
+import TargetCursor from "@/components/TargetCursor"
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home")
@@ -48,6 +49,13 @@ export default function Portfolio() {
 
   return (
     <div className="relative min-h-screen bg-background text-foreground transition-colors duration-300">
+      <TargetCursor 
+        spinDuration={2}
+        hideDefaultCursor
+        parallaxOn
+        hoverDuration={0.2}
+      />
+      
       {/* Progress bar - only rendered after mount to avoid hydration mismatch */}
       {mounted && (
         <motion.div
