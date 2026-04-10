@@ -2,12 +2,14 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { checkRateLimit } from "@/lib/rate-limit";
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
+    console.log("Request received for contact form.");
+
     const ownerEmail = "2k23.cs2312635@gmail.com";
 
     // 0. Rate Limiting
-    const ip = request.headers.get("x-forwarded-for") || "anonymous";
+    const ip = req.headers.get("x-forwarded-for") || "anonymous";
     const rateLimit = await checkRateLimit(ip);
 
     if (!rateLimit.allowed) {
@@ -17,16 +19,14 @@ export async function POST(request: Request) {
       );
     }
 
-    const body = await request.json();
+    const body = await req.json();
     const { name, email, message, honeypot } = body;
 
     // 1. Basic SPAM Protection (Honeypot)
-    // If the hidden honeypot field is filled, silently return a success response
-    // to trick the bot into thinking the form was submitted successfully.
     if (honeypot) {
       console.log("Honeypot triggered. Ignoring submission.");
       return NextResponse.json(
-        { message: "Message sent successfully" },
+        { success: true, message: "Message sent successfully" },
         { status: 200 }
       );
     }
@@ -34,48 +34,49 @@ export async function POST(request: Request) {
     // 2. Validate Required Fields
     if (!name || !email || !message) {
       return NextResponse.json(
-        { error: "Name, email, and message are required fields." },
+        { success: false, error: "Name, email, and message are required fields." },
+        { status: 400 }
+      );
+    }
+
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { success: false, error: "Invalid email address format." },
         { status: 400 }
       );
     }
 
     // 3. Environment Variables Check
-    const emailUser = process.env.EMAIL_USER;
-    const emailPass = process.env.EMAIL_PASS;
+    console.log("EMAIL_USER exists:", !!process.env.EMAIL_USER);
+    console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
 
-    if (!emailUser || !emailPass) {
-      console.error(
-        "Email environment variables (EMAIL_USER, EMAIL_PASS) are not configured."
-      );
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
       return NextResponse.json(
-        { error: "Server configuration error. Please try again later." },
+        {
+          success: false,
+          error: "Server configuration error: Missing email credentials"
+        },
         { status: 500 }
       );
     }
 
+    const emailUser = process.env.EMAIL_USER;
+    const emailPass = process.env.EMAIL_PASS;
+
     // 4. Configure Nodemailer Transporter
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
       auth: {
         user: emailUser,
         pass: emailPass,
       },
     });
 
-    // Verify transporter configuration
-    try {
-      await transporter.verify();
-    } catch (verifyError) {
-      console.error("Transporter verification failed:", verifyError);
-      return NextResponse.json(
-        { error: "Email configuration is incorrect. Please check your credentials." },
-        { status: 500 }
-      );
-    }
-
     // 5. Email TO YOU (The Portfolio Owner)
-    // IMPORTANT: 'from' must be your own email address to avoid spoofing rejections.
-    // Use 'replyTo' so when you click "reply", it sends to the user's email.
     const mailToOwner = {
       from: `"Portfolio Contact Form" <${emailUser}>`,
       to: ownerEmail,
@@ -96,7 +97,6 @@ export async function POST(request: Request) {
     };
 
     // 6. Auto-Reply TO THE USER
-    // Send a polite confirmation to the user.
     const autoReplyToUser = {
       from: `"Adarsh Sachan" <${emailUser}>`,
       to: email,
@@ -115,20 +115,28 @@ export async function POST(request: Request) {
     };
 
     // 7. Send Emails
-    // We send both emails concurrently
-    await Promise.all([
-      transporter.sendMail(mailToOwner),
-      transporter.sendMail(autoReplyToUser),
-    ]);
-
-    return NextResponse.json(
-      { message: "Message sent successfully" },
-      { status: 200 }
-    );
+    console.log("Before sending email...");
+    try {
+      await Promise.all([
+        transporter.sendMail(mailToOwner),
+        transporter.sendMail(autoReplyToUser),
+      ]);
+      console.log("Email successfully sent.");
+      return NextResponse.json(
+        { success: true, message: "Message sent successfully" },
+        { status: 200 }
+      );
+    } catch (error) {
+      console.error("MAIL ERROR:", error);
+      return NextResponse.json(
+        { success: false, error: "Email failed to send" },
+        { status: 500 }
+      );
+    }
   } catch (error) {
     console.error("Error processing contact form:", error);
     return NextResponse.json(
-      { error: "Failed to send message. Please try again later." },
+      { success: false, error: "Failed to send message. Please try again later." },
       { status: 500 }
     );
   }
