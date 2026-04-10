@@ -18,6 +18,7 @@ const projects = [
     github: "https://github.com/theadarsh1m/MediChain",
     demo: "https://medichainreal.netlify.app/",
     image: "/medichain.png",
+    isWip: false,
   },
   {
     title: "LegalEase",
@@ -29,7 +30,8 @@ const projects = [
     accentColor: "emerald",
     github: "https://github.com/theadarsh1m/Justice-Ally.git",
     demo: "",
-    image: "/medichain.png",
+    image: "/legalease.png",
+    isWip: false,
   },
   {
     title: "CONSOLED",
@@ -39,9 +41,10 @@ const projects = [
     tech: ["Go", "ANSI Escape Codes", "Event Systems", "Layout Engines"],
     gradient: "from-zinc-400 to-slate-500",
     accentColor: "zinc",
-    github: "https://github.com/theadarsh1m/CONSOLED",
+    github: "https://github.com/theadarsh1m/",
     demo: "",
-    image: "/medichain.png",
+    image: "/consoled.jpg",
+    isWip: true,
   },
   {
     title: "ShaadiCrasher",
@@ -54,6 +57,7 @@ const projects = [
     github: "https://github.com/theadarsh1m/ShaadiCrasher",
     demo: "https://shaadicrasher.netlify.app/",
     image: "/shaadicrasher.png",
+    isWip: false,
   },
   {
     title: "Nickly",
@@ -66,6 +70,7 @@ const projects = [
     github: "https://github.com/theadarsh1m/Nickly",
     demo: "https://nickly.onrender.com/",
     image: "/nickly.png",
+    isWip: false,
   },
 ]
 
@@ -103,7 +108,7 @@ function FeaturedProject({ project, index }: { project: typeof projects[0]; inde
               <ArrowUpRight className="w-5 h-5 text-white" />
             </div>
 
-            {!project.demo && (
+            {project.isWip && (
               <div className="absolute bottom-4 left-4">
                 <span className="bg-yellow-400/90 text-black px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                   In Development
@@ -115,9 +120,6 @@ function FeaturedProject({ project, index }: { project: typeof projects[0]; inde
 
         {/* Content side */}
         <div className={`md:col-span-5 ${isEven ? "md:order-2 md:text-right" : "md:order-1 md:text-left"}`}>
-          <p className={`text-sm font-mono tracking-wider uppercase mb-2 bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>
-            Featured Project
-          </p>
           <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-1">{project.title}</h3>
           <p className="text-sm text-muted-foreground font-medium mb-4">{project.subtitle}</p>
 
@@ -127,8 +129,8 @@ function FeaturedProject({ project, index }: { project: typeof projects[0]; inde
               {project.description}
             </p>
             {project.description.length > 120 && (
-              <button 
-                onClick={() => setIsExpanded(!isExpanded)} 
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
                 className="text-xs text-primary mt-2 font-medium hover:underline text-left"
               >
                 {isExpanded ? "Show less" : "Show more"}
@@ -220,10 +222,10 @@ function CompactProject({ project, index }: { project: typeof projects[0]; index
             </div>
           </motion.div>
 
-          {!project.demo && (
+          {project.isWip && (
             <div className="absolute top-3 right-3">
               <span className="bg-yellow-400/90 text-black px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
-                WIP
+                In Development
               </span>
             </div>
           )}
@@ -241,11 +243,11 @@ function CompactProject({ project, index }: { project: typeof projects[0]; index
               {project.description}
             </p>
             {project.description.length > 100 && (
-              <button 
+              <button
                 onClick={(e) => {
                   e.preventDefault();
                   setIsExpanded(!isExpanded);
-                }} 
+                }}
                 className="text-xs text-primary mt-1 font-medium hover:underline text-left focus:outline-none"
               >
                 {isExpanded ? "Show less" : "Show more"}
