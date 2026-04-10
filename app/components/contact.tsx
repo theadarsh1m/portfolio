@@ -187,9 +187,7 @@ export default function Contact() {
 
                   <div className="pt-6 mt-4 border-t border-border/50">
                     <motion.a
-                      href="https://drive.google.com/file/d/1bBv4948271T2v5vnH4znSA2NjoBBTbyE/view?usp=sharing"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="/resume"
                       whileHover={{
                         scale: 1.02,
                         boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
