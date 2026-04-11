@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/favicon.ico",
   },
+  verification: {
+    google: "7asNvLbMjMFEV3JFSwi8vbHjgSsCy9Ec3rSXRko2mmk",
+  },
   generator: 'v0.dev'
 }
 
