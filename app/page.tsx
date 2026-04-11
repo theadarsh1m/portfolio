@@ -76,6 +76,10 @@ export default function Portfolio() {
         <Achievements />
         <Contact />
       </main>
+      
+      <footer className="py-6 text-center text-muted-foreground border-t border-border mt-auto relative z-10 bg-background">
+        <p>&copy; {new Date().getFullYear()} Adarsh Sachan. All rights reserved.</p>
+      </footer>
     </div>
   )
 }

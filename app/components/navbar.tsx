@@ -32,12 +32,12 @@ export default function Navbar({ activeSection }: NavbarProps) {
   }
 
   return (
-    <motion.nav
+    <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <motion.div whileHover={{ scale: 1.05 }} className="text-xl font-bold text-foreground">
             Adarsh Sachan
@@ -84,7 +84,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
             </button>
           </div>
         </div>
-      </div>
+      </nav>
 
       {/* Mobile Menu Dropdown */}
       <AnimatePresence>
@@ -112,6 +112,6 @@ export default function Navbar({ activeSection }: NavbarProps) {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </motion.header>
   )
 }

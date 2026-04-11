@@ -55,7 +55,7 @@ export default function About() {
                 >
                   <Image
                     src="/adarsh-photo.png"
-                    alt="Adarsh Sachan - Full Stack Developer"
+                    alt="Adarsh Sachan Profile Picture - Full Stack Developer"
                     width={500}
                     height={600}
                     className="w-full h-auto object-cover"
@@ -93,14 +93,14 @@ export default function About() {
 
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    I'm a dedicated 3rd-year Computer Science Engineering student at PSIT Kanpur, with a deep passion
+                    Welcome to Adarsh Sachan's portfolio. I'm a dedicated 3rd-year Computer Science Engineering student at PSIT Kanpur, with a deep passion
                     for full-stack web development. My journey in tech is driven by curiosity and the desire to create
                     meaningful digital experiences.
                   </p>
 
                   <p>
-                    Currently focusing on the MERN stack, I enjoy building real-world applications that solve actual
-                    problems. From weather apps to food donation platforms, I believe in learning by doing and creating
+                    Currently focusing on MERN stack development, I enjoy building real-world applications that solve actual
+                    problems. From healthcare solutions like MediChain to dynamic platforms like ShaadiCrasher, I believe in learning by doing and creating
                     impact through code.
                   </p>
 

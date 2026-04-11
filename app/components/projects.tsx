@@ -93,6 +93,7 @@ function FeaturedProject({ project, index }: { project: typeof projects[0]; inde
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-target block relative rounded-xl overflow-hidden aspect-video shadow-xl"
+            aria-label={`View ${project.title} project details`}
           >
             <Image
               src={project.image}
@@ -158,7 +159,7 @@ function FeaturedProject({ project, index }: { project: typeof projects[0]; inde
               rel="noopener noreferrer"
               whileHover={{ y: -3 }}
               className="cursor-target text-muted-foreground hover:text-foreground transition-colors duration-200"
-              aria-label="GitHub"
+              aria-label={`View ${project.title} source code on GitHub`}
             >
               <Github size={22} />
             </motion.a>
@@ -169,7 +170,7 @@ function FeaturedProject({ project, index }: { project: typeof projects[0]; inde
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
                 className="cursor-target text-muted-foreground hover:text-foreground transition-colors duration-200"
-                aria-label="Live Demo"
+                aria-label={`View ${project.title} live demo`}
               >
                 <ExternalLink size={22} />
               </motion.a>
@@ -201,6 +202,7 @@ function CompactProject({ project, index }: { project: typeof projects[0]; index
           target="_blank"
           rel="noopener noreferrer"
           className="cursor-target block relative w-full aspect-[16/10] shrink-0 overflow-hidden cursor-pointer"
+          aria-label={`View ${project.title} project details`}
         >
           <Image
             src={project.image}
@@ -280,7 +282,7 @@ function CompactProject({ project, index }: { project: typeof projects[0]; index
               rel="noopener noreferrer"
               whileHover={{ y: -2, scale: 1.1 }}
               className="cursor-target text-muted-foreground hover:text-foreground transition-colors duration-200"
-              aria-label="GitHub"
+              aria-label={`View ${project.title} source code on GitHub`}
             >
               <Github size={18} />
             </motion.a>
@@ -291,7 +293,7 @@ function CompactProject({ project, index }: { project: typeof projects[0]; index
                 rel="noopener noreferrer"
                 whileHover={{ y: -2, scale: 1.1 }}
                 className="cursor-target text-muted-foreground hover:text-foreground transition-colors duration-200"
-                aria-label="Live Demo"
+                aria-label={`View ${project.title} live demo`}
               >
                 <ExternalLink size={18} />
               </motion.a>

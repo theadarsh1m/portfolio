@@ -8,14 +8,14 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Adarsh Sachan - Full Stack Developer",
+  title: "Adarsh Sachan | Full-Stack MERN Developer Portfolio",
   description:
-    "Portfolio of Adarsh Sachan, a passionate 3rd year B.Tech CSE student and full-stack developer specializing in MERN stack development.",
-  keywords: "Adarsh Sachan, Full Stack Developer, MERN Stack, React, Node.js, Portfolio, Web Developer",
+    "Adarsh Sachan's portfolio. I am a Full-Stack MERN Developer based in Kanpur, specializing in React, Node.js, and AI integration.",
+  keywords: "theadarsh, Adarsh Sachan, Full-Stack Developer, MERN stack, web development portfolio, Kanpur, MediChain, ShaadiCrasher",
   authors: [{ name: "Adarsh Sachan" }],
   openGraph: {
-    title: "Adarsh Sachan - Full Stack Developer",
-    description: "Portfolio of Adarsh Sachan, a passionate full-stack developer and CSE student",
+    title: "Adarsh Sachan | Full-Stack MERN Developer Portfolio",
+    description: "Welcome to Adarsh Sachan's portfolio. View my MERN stack projects, including MediChain and ShaadiCrasher.",
     type: "website",
   },
   icons: {

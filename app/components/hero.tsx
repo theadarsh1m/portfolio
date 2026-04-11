@@ -54,13 +54,27 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
+                  delay: 0.1,
+                  duration: 1,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }}
+                className="text-4xl sm:text-5xl md:text-5xl lg:text-7xl font-bold leading-[1.1] text-foreground mb-4"
+              >
+                Adarsh Sachan<br/>
+                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary mt-3 block">Full-Stack Developer</span>
+              </motion.h1>
+              
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
                   delay: 0.3,
                   duration: 1,
                   ease: [0.25, 0.46, 0.45, 0.94],
                 }}
-                className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold leading-[1.15] text-foreground mb-4"
+                className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold leading-[1.15] text-foreground mt-8 mb-4"
               >
-                <div className="mb-2">I enjoy</div>
+                <div className="mb-2 text-muted-foreground">I enjoy</div>
                 <div className="relative h-[2.9em] sm:h-[2.7em] lg:h-[1.6em] overflow-hidden w-full">
                   <AnimatePresence mode="popLayout">
                     <motion.span
@@ -75,7 +89,7 @@ export default function Hero() {
                     </motion.span>
                   </AnimatePresence>
                 </div>
-              </motion.h1>
+              </motion.h2>
             </div>
 
             {/* Subtitle */}
@@ -103,7 +117,7 @@ export default function Hero() {
                 }}
                 className="text-lg text-muted-foreground"
               >
-                PSIT Kanpur • Full-Stack Developer • DSA Enthusiast
+                PSIT Kanpur • MERN Stack Expert • DSA Enthusiast
               </motion.p>
 
               <motion.p
@@ -136,6 +150,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
                 className="cursor-target px-8 py-3 bg-primary text-primary-foreground rounded-lg transition-all duration-300"
+                aria-label="Get in touch with Adarsh Sachan"
               >
                 Get In Touch
               </motion.a>
@@ -148,6 +163,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
                 className="cursor-target px-8 py-3 bg-secondary text-secondary-foreground border border-border rounded-lg transition-all duration-300 flex items-center gap-2 hover:bg-muted"
+                aria-label="Download Adarsh Sachan's Resume"
               >
                 <Download size={18} />
                 Resume
@@ -176,6 +192,7 @@ export default function Hero() {
                     duration: 0.8,
                     ease: [0.25, 0.46, 0.45, 0.94],
                   }}
+                  aria-label={social.label}
                 >
                   <social.icon size={24} />
                 </motion.a>
@@ -201,7 +218,7 @@ export default function Hero() {
             >
               <img
                 src="/adarsh-photo.png"
-                alt="Adarsh Sachan"
+                alt="Adarsh Sachan Profile Picture"
                 className="object-cover w-full h-full"
               />
             </motion.div>

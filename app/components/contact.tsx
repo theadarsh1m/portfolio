@@ -140,6 +140,7 @@ export default function Contact() {
                       }}
                       transition={{ type: "spring", stiffness: 400, damping: 25 }}
                       className="cursor-target flex items-center gap-4 p-4 bg-card rounded-lg hover:bg-muted transition-colors duration-200"
+                      aria-label={info.title}
                     >
                       <motion.div
                         className="p-3 bg-gradient-to-r from-primary to-accent rounded-lg"
@@ -179,6 +180,7 @@ export default function Contact() {
                           rotate: { duration: 0.6 },
                         }}
                         className={`cursor-target p-3 bg-secondary rounded-lg text-muted-foreground ${social.color} transition-colors duration-200`}
+                        aria-label={social.title}
                       >
                         <social.icon size={24} />
                       </motion.a>
@@ -195,6 +197,7 @@ export default function Contact() {
                       whileTap={{ scale: 0.98 }}
                       transition={{ type: "spring", stiffness: 400, damping: 25 }}
                       className="cursor-target inline-flex items-center gap-2 px-6 py-3 bg-background border border-primary text-primary rounded-lg font-medium hover:bg-primary/10 transition-colors duration-300 shadow-sm"
+                      aria-label="View Resume"
                     >
                       <FileText size={18} />
                       View Resume
