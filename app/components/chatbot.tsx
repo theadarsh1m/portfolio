@@ -29,6 +29,13 @@ export default function Chatbot() {
   const [inputValue, setInputValue] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const focusInput = () => {
+    requestAnimationFrame(() => {
+      inputRef.current?.focus()
+    })
+  }
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -37,6 +44,12 @@ export default function Chatbot() {
   useEffect(() => {
     scrollToBottom()
   }, [messages])
+
+  useEffect(() => {
+    if (isOpen) {
+      focusInput()
+    }
+  }, [isOpen])
 
   const suggestedQuestions = [
     "What are Adarsh's main skills?",
@@ -47,7 +60,7 @@ export default function Chatbot() {
   ]
 
   const sendMessage = async (content: string) => {
-    if (!content.trim()) return
+    if (!content.trim() || isLoading) return
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -59,6 +72,7 @@ export default function Chatbot() {
     setMessages((prev) => [...prev, userMessage])
     setInputValue("")
     setIsLoading(true)
+    focusInput()
 
     try {
       const response = await fetch("/api/chat", {
@@ -69,11 +83,15 @@ export default function Chatbot() {
         body: JSON.stringify({ message: content }),
       })
 
+      const data = await response.json()
+
       if (!response.ok) {
-        throw new Error("Failed to get response")
+        throw new Error(data?.error || "Failed to get response")
       }
 
-      const data = await response.json()
+      if (!data?.response) {
+        throw new Error("Received an empty response from the assistant")
+      }
 
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -87,13 +105,17 @@ export default function Chatbot() {
       console.error("Error sending message:", error)
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: "Sorry, I'm having trouble responding right now. Please try again later or contact Adarsh directly!",
+        content:
+          error instanceof Error
+            ? error.message
+            : "Sorry, I'm having trouble responding right now. Please try again later or contact Adarsh directly!",
         sender: "bot",
         timestamp: new Date(),
       }
       setMessages((prev) => [...prev, errorMessage])
     } finally {
       setIsLoading(false)
+      focusInput()
     }
   }
 
@@ -104,6 +126,7 @@ export default function Chatbot() {
 
   const handleSuggestedQuestion = (question: string) => {
     sendMessage(question)
+    focusInput()
   }
 
   return (
@@ -255,11 +278,11 @@ export default function Chatbot() {
               <form onSubmit={handleSubmit} className="p-4 border-t dark:border-border">
                 <div className="flex gap-2">
                   <Input
+                    ref={inputRef}
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder="Ask me anything about Adarsh..."
                     className="cursor-target flex-1"
-                    disabled={isLoading}
                   />
                   <Button
                     type="submit"

@@ -18,6 +18,11 @@ export const metadata: Metadata = {
     description: "Portfolio of Adarsh Sachan, a passionate full-stack developer and CSE student",
     type: "website",
   },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   generator: 'v0.dev'
 }
 
@@ -29,6 +34,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8268053834879518" crossOrigin="anonymous"></script>
       </head>
       <body className={inter.className}>
