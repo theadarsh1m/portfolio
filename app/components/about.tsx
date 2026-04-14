@@ -54,7 +54,7 @@ export default function About() {
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-                  className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center shadow-lg"
+                  className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-violet-400 to-violet-600 dark:from-violet-500 dark:to-violet-700 rounded-full flex items-center justify-center shadow-lg"
                 >
                   <Target className="w-6 h-6 text-white" />
                 </motion.div>
@@ -70,21 +70,15 @@ export default function About() {
 
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    Welcome to Adarsh Sachan's portfolio. I'm a dedicated 3rd-year Computer Science Engineering student at PSIT Kanpur, with a deep passion
-                    for full-stack web development. My journey in tech is driven by curiosity and the desire to create
-                    meaningful digital experiences.
+                    I'm a 3rd-year <strong className="text-foreground font-medium">Computer Science</strong> student at PSIT Kanpur, passionate about <strong className="text-foreground font-medium">competitive programming</strong> and building high-performance <strong className="text-foreground font-medium">web applications</strong>. I thrive on solving <strong className="text-foreground font-medium">complex algorithmic challenges</strong> and turning optimal logic into robust software.
                   </p>
 
                   <p>
-                    Currently focusing on MERN stack development, I enjoy building real-world applications that solve actual
-                    problems. From healthcare solutions like MediChain to dynamic platforms like ShaadiCrasher, I believe in learning by doing and creating
-                    impact through code.
+                    My strong <strong className="text-foreground font-medium">DSA foundation</strong> honed on <strong className="text-foreground font-medium">LeetCode and Codeforces</strong> directly fuels my development work. I specialize in the <strong className="text-foreground font-medium">React and Next.js ecosystems</strong> to architect scalable, optimized, and impactful solutions like the MediChain platform.
                   </p>
 
                   <p>
-                    When I'm not coding, you'll find me solving algorithmic challenges on LeetCode, exploring new
-                    technologies, or collaborating on innovative projects. I'm actively seeking internships and
-                    freelance opportunities to further expand my skills and contribute to exciting projects.
+                    Whether optimizing DP approaches under time constraints or designing seamless full-stack architectures, I am constantly pushing technical boundaries. I am actively seeking <strong className="text-foreground font-medium">internships and new opportunities</strong> where I can apply my <strong className="text-foreground font-medium">problem-solving skills</strong> and engineering expertise to build real-world, impactful products.
                   </p>
                 </div>
 

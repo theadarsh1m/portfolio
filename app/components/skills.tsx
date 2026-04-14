@@ -6,7 +6,7 @@ import { LinkPreview } from "./link-preview"
 
 // Skills data
 const featuresData = [
-  // Row 1 - Top
+  // Top Edge
   {
     title: "HTML",
     icon: "https://skillicons.dev/icons?i=html",
@@ -17,144 +17,144 @@ const featuresData = [
   {
     title: "React",
     icon: "https://techstack-generator.vercel.app/react-icon.svg",
-    left: "32%", top: "3%",
+    left: "35%", top: "5%",
     delay: 0.1,
     previewLink: "https://react.dev/",
   },
   {
     title: "MongoDB",
     icon: "https://skillicons.dev/icons?i=mongodb",
-    left: "55%", top: "5%",
+    left: "60%", top: "5%",
     delay: 0.1,
     previewLink: "https://www.mongodb.com/",
   },
   {
     title: "CSS",
     icon: "https://skillicons.dev/icons?i=css",
-    left: "80%", top: "3%",
+    left: "85%", top: "5%",
     delay: 0.1,
     previewLink: "https://developer.mozilla.org/en-US/docs/Web/CSS",
   },
-  // Row 2
+  // Upper Left Orbit
   {
     title: "Bootstrap",
     icon: "https://skillicons.dev/icons?i=bootstrap",
-    left: "18%", top: "18%",
+    left: "20%", top: "20%",
     delay: 0.15,
     previewLink: "https://getbootstrap.com/",
   },
   {
+    title: "MySQL",
+    icon: "https://techstack-generator.vercel.app/mysql-icon.svg",
+    left: "5%", top: "25%",
+    delay: 0.2,
+    previewLink: "https://www.mysql.com/",
+  },
+  // Upper Right Orbit
+  {
     title: "Express.js",
     icon: "https://skillicons.dev/icons?i=express",
-    left: "68%", top: "17%",
+    left: "75%", top: "20%",
     delay: 0.15,
     previewLink: "https://expressjs.com/",
-  },
-  // Row 3
-  {
-    title: "Java",
-    icon: "https://techstack-generator.vercel.app/java-icon.svg",
-    left: "5%", top: "32%",
-    delay: 0.2,
-    previewLink: "https://www.java.com/",
   },
   {
     title: "Tailwind",
     icon: "https://skillicons.dev/icons?i=tailwind",
-    left: "82%", top: "30%",
+    left: "88%", top: "30%",
     delay: 0.2,
     previewLink: "https://tailwindcss.com/",
   },
-  // Row 4 - beside circle
+  // Middle Left Orbit
+  {
+    title: "Java",
+    icon: "https://techstack-generator.vercel.app/java-icon.svg",
+    left: "10%", top: "45%",
+    delay: 0.2,
+    previewLink: "https://www.java.com/",
+  },
   {
     title: "Node.js",
     icon: "https://skillicons.dev/icons?i=nodejs",
-    left: "12%", top: "45%",
+    left: "25%", top: "50%",
     delay: 0.25,
     previewLink: "https://nodejs.org/",
   },
+  // Middle Right Orbit
   {
     title: "Vercel",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg",
-    left: "78%", top: "43%",
+    left: "85%", top: "48%",
     delay: 0.25,
     previewLink: "https://vercel.com/",
     invert: true,
   },
-  // Row 5
+  {
+    title: "VS Code",
+    icon: "https://skillicons.dev/icons?i=vscode",
+    left: "70%", top: "53%",
+    delay: 0.35,
+    previewLink: "https://code.visualstudio.com/",
+  },
+  // Lower Left Orbit
   {
     title: "C",
     icon: "https://skillicons.dev/icons?i=c",
-    left: "5%", top: "58%",
+    left: "5%", top: "65%",
     delay: 0.3,
     previewLink: "https://en.wikipedia.org/wiki/C_(programming_language)",
   },
   {
-    title: "Firebase",
-    icon: "https://skillicons.dev/icons?i=firebase",
-    left: "75%", top: "57%",
-    delay: 0.3,
-    previewLink: "https://firebase.google.com/",
-  },
-  // Row 6
-  {
     title: "GitHub",
     icon: "https://techstack-generator.vercel.app/github-icon.svg",
-    left: "18%", top: "70%",
+    left: "22%", top: "72%",
     delay: 0.35,
     previewLink: "https://github.com/",
     invert: true,
   },
+  // Lower Right Orbit
+  {
+    title: "Firebase",
+    icon: "https://skillicons.dev/icons?i=firebase",
+    left: "80%", top: "68%",
+    delay: 0.3,
+    previewLink: "https://firebase.google.com/",
+  },
   {
     title: "Postman",
     icon: "https://skillicons.dev/icons?i=postman",
-    left: "68%", top: "68%",
+    left: "65%", top: "75%",
     delay: 0.35,
     previewLink: "https://www.postman.com/",
   },
-  // Row 7 - Bottom
+  // Bottom Edge
   {
     title: "JavaScript",
     icon: "https://techstack-generator.vercel.app/js-icon.svg",
-    left: "8%", top: "83%",
+    left: "8%", top: "85%",
     delay: 0.4,
     previewLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
   },
   {
     title: "Python",
     icon: "https://techstack-generator.vercel.app/python-icon.svg",
-    left: "30%", top: "85%",
+    left: "30%", top: "88%",
     delay: 0.4,
     previewLink: "https://www.python.org/",
   },
   {
     title: "Git",
     icon: "https://skillicons.dev/icons?i=git",
-    left: "52%", top: "83%",
+    left: "55%", top: "88%",
     delay: 0.4,
     previewLink: "https://git-scm.com/",
   },
   {
     title: "TypeScript",
     icon: "https://techstack-generator.vercel.app/ts-icon.svg",
-    left: "78%", top: "85%",
+    left: "82%", top: "85%",
     delay: 0.4,
     previewLink: "https://www.typescriptlang.org/",
-  },
-  // Near the circle
-  {
-    title: "MySQL",
-    icon: "https://techstack-generator.vercel.app/mysql-icon.svg",
-    left: "28%", top: "35%",
-    delay: 0.2,
-    previewLink: "https://www.mysql.com/",
-  },
-  {
-    title: "VS Code",
-    icon: "https://skillicons.dev/icons?i=vscode",
-    left: "62%", top: "65%",
-    delay: 0.35,
-    previewLink: "https://code.visualstudio.com/",
   },
 ]
 
