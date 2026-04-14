@@ -178,18 +178,20 @@ export default function Achievements() {
                   {/* Navigation arrows */}
                   <motion.button
                     onClick={prev}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="cursor-target absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-black/70 text-black dark:text-white border border-border rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-black transition-colors shadow-lg z-10"
+                    initial={{ y: "-50%" }}
+                    whileHover={{ scale: 1.1, y: "-50%" }}
+                    whileTap={{ scale: 0.9, y: "-50%" }}
+                    className="cursor-target absolute left-3 top-1/2 w-10 h-10 bg-white/90 dark:bg-black/70 text-black dark:text-white border border-border rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-black transition-colors shadow-lg z-10"
                     aria-label="Previous certificate"
                   >
                     <ChevronLeft size={20} />
                   </motion.button>
                   <motion.button
                     onClick={next}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="cursor-target absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-black/70 text-black dark:text-white border border-border rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-black transition-colors shadow-lg z-10"
+                    initial={{ y: "-50%" }}
+                    whileHover={{ scale: 1.1, y: "-50%" }}
+                    whileTap={{ scale: 0.9, y: "-50%" }}
+                    className="cursor-target absolute right-3 top-1/2 w-10 h-10 bg-white/90 dark:bg-black/70 text-black dark:text-white border border-border rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-black transition-colors shadow-lg z-10"
                     aria-label="Next certificate"
                   >
                     <ChevronRight size={20} />

@@ -1,34 +1,11 @@
 "use client"
 
-import { Code, Target, Users, Award } from "lucide-react"
 import ScrollReveal from "./scroll-reveal"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { Code, Target } from "lucide-react"
 
 export default function About() {
-
-  const highlights = [
-    {
-      icon: Code,
-      title: "Full-Stack Development",
-      description: "Passionate about MERN stack development with hands-on project experience",
-    },
-    {
-      icon: Target,
-      title: "Problem Solving",
-      description: "Active on LeetCode, constantly improving algorithmic thinking and DSA skills",
-    },
-    {
-      icon: Users,
-      title: "Collaboration",
-      description: "Experience working on team projects and hackathons with innovative solutions",
-    },
-    {
-      icon: Award,
-      title: "Continuous Learning",
-      description: "Multiple certifications from prestigious institutions like IIT Kharagpur & Kanpur",
-    },
-  ]
 
   return (
     <section id="about" className="py-20 bg-background relative overflow-hidden">
@@ -54,7 +31,7 @@ export default function About() {
                   className="relative overflow-hidden rounded-2xl shadow-2xl"
                 >
                   <Image
-                    src="/adarsh-photo.png"
+                    src="/adarsh.png"
                     alt="Adarsh Sachan Profile Picture - Full Stack Developer"
                     width={500}
                     height={600}
@@ -124,35 +101,6 @@ export default function About() {
                 </motion.div>
               </div>
             </ScrollReveal>
-          </div>
-
-          {/* Highlights grid with staggered up reveals */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
-            {highlights.map((highlight, index) => (
-              <ScrollReveal key={highlight.title} direction="up" delay={0.6 + index * 0.1}>
-                <motion.div
-                  whileHover={{
-                    scale: 1.05,
-                    y: -8,
-                    boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
-                  }}
-                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className="bg-card border border-border p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-                >
-                  <div className="flex items-center mb-4">
-                    <motion.div
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                      className="p-2 bg-gradient-to-r from-primary to-accent rounded-lg"
-                    >
-                      <highlight.icon className="w-6 h-6 text-white" />
-                    </motion.div>
-                  </div>
-                  <h4 className="text-lg font-semibold text-foreground mb-2">{highlight.title}</h4>
-                  <p className="text-muted-foreground text-sm">{highlight.description}</p>
-                </motion.div>
-              </ScrollReveal>
-            ))}
           </div>
         </div>
       </div>

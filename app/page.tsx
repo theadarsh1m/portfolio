@@ -8,6 +8,7 @@ import About from "./components/about"
 import Skills from "./components/skills"
 import Projects from "./components/projects"
 import Achievements from "./components/achievements"
+import Competitive from "./components/competitive"
 import Contact from "./components/contact"
 import ThemeToggle from "./components/theme-toggle"
 import Chatbot from "./components/chatbot"
@@ -28,7 +29,7 @@ export default function Portfolio() {
     setMounted(true)
 
     const handleScroll = () => {
-      const sections = ["home", "about", "skills", "projects", "achievements", "contact"]
+      const sections = ["home", "about", "skills", "projects", "achievements", "competitive", "contact"]
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -74,6 +75,7 @@ export default function Portfolio() {
         <Skills />
         <Projects />
         <Achievements />
+        <Competitive />
         <Contact />
       </main>
       

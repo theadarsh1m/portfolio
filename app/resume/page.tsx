@@ -170,7 +170,7 @@ export default function ResumePage() {
             <ul className="list-none space-y-2 text-muted-foreground text-sm">
               <li className="flex items-start gap-2">
                 <span className="text-primary mt-0.5">•</span>
-                LeetCode Rating: 1823 (Top 6.2%)
+                LeetCode Rating: 1832 (Top 6.2%)
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-primary mt-0.5">•</span>

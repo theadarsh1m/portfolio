@@ -35,14 +35,14 @@ interface ScoredKnowledgeMatch {
 
 type LocalDecision =
   | {
-      action: "respond-local"
-      response: string
-      source: string
-    }
+    action: "respond-local"
+    response: string
+    source: string
+  }
   | {
-      action: "fallback-api"
-      normalizedQuestion: string
-    }
+    action: "fallback-api"
+    normalizedQuestion: string
+  }
 
 interface CachedFallbackResponse {
   response: string
@@ -144,7 +144,7 @@ const PROJECTS: Project[] = [
 ]
 
 const ACHIEVEMENTS = [
-  "LeetCode rating 1823 (top 6.2%).",
+  "LeetCode rating 1832 (top 6.2%).",
   "Solved 1000+ DSA problems.",
   "Hack O' Clock Hackathon Finalist.",
 ]
