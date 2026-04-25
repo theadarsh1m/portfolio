@@ -93,7 +93,7 @@ const PROJECTS: Project[] = [
       "Added AI-powered lab report analysis and telemedicine chat capabilities.",
     ],
     github: "https://github.com/theadarsh1m/MediChain",
-    demo: "https://medichainreal.netlify.app/",
+    demo: "https://medichain.theadarsh.me/",
     status: "live",
   },
   {
@@ -126,19 +126,20 @@ const PROJECTS: Project[] = [
       "Added automatic cleanup for expired wedding invites.",
     ],
     github: "https://github.com/theadarsh1m/ShaadiCrasher",
-    demo: "https://shaadicrasher.netlify.app/",
+    demo: "https://shaadicrasher.theadarsh.me/",
     status: "live",
   },
   {
     name: "Nickly",
-    summary: "URL shortener with analytics dashboard and click tracking.",
-    stack: ["Node.js", "Express", "MongoDB", "EJS", "Chart.js"],
+    summary:
+      "Full-featured URL shortener and text snippet web app with analytics, user dashboards, visibility controls, and admin management.",
+    stack: ["Node.js", "Express.js", "MongoDB", "EJS", "Chart.js", "JWT", "bcrypt"],
     highlights: [
-      "Managed 100+ test URLs with custom short IDs.",
-      "Implemented click history, pagination, and visual analytics.",
+      "Shortens long URLs and saves text snippets with custom short IDs, public/private visibility, and one-click sharing.",
+      "Includes JWT auth, personal dashboards, visit analytics with Chart.js, and an admin panel for search, filters, deletes, and user management.",
     ],
     github: "https://github.com/theadarsh1m/Nickly",
-    demo: "https://nickly.onrender.com/",
+    demo: "https://nickly.theadarsh.me/",
     status: "live",
   },
 ]
